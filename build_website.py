@@ -1,7 +1,7 @@
 import json, sys, os, shutil
 
 class builder:
-    _V= 0.01
+    _V= 0.02
     project= ""
     projects= {}
     current_website= {}
@@ -98,8 +98,11 @@ class builder:
         else:
             print("Use a project before get options")
     def load(self):
-        with open("imp_simply_builder.json", "r") as read_file:
-            self.projects= json.loads(read_file.read())["projects"]
+        if os.path.exists("imp_simply_builder.json"):
+            with open("imp_simply_builder.json", "r") as read_file:
+                self.projects= json.loads(read_file.read())["projects"]
+        else:
+            self.projects= {}
     def write(self):
         data= {
                 "projects": self.projects
