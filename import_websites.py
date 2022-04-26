@@ -1,7 +1,13 @@
 from glob import glob
 to_write= ""
 def translate_framework(f, dt="", repl= []):
-    patterns= [['<link href="', '" rel="stylesheet">'], ['<link rel="stylesheet" href="', '">'], ['<script src="', '"></script>']]
+    patterns= []
+    """[['<script src="', '" crossorigin="anonymous"></script>'],
+    ['<rcript src="','"></script>'],
+    ['<link href="','" rel="stylesheet" type="text/css" />'],
+    ['<rink href="', '" rel="stylesheet" />']
+    ]"""
+    #[['<rel="sylesheet" href="', '" media="all">']]# [['<link href="', '" rel="stylesheet">'], ['<script src="', '"></script>']]
     for pattern in patterns:
         i= 0
         to_write= ""
@@ -72,7 +78,7 @@ for name in glob(input("path:\t")+"/*.html"):
     php_name= name.replace(".html", ".php")
     wr_file= open(php_name, "w")
     wr_file.write("<?php\n$Sito= new Foreground;\n?>")
-    wr_file.write(translate_framework(f, "restaurantly/", ["assets/", ""]))
+    wr_file.write(translate_framework(f, ""))
     wr_file.close()
     #open(name.replace(".html", ".php"), "w").write(translate_framework(f, ""))
 
